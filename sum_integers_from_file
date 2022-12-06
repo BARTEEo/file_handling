@@ -1,0 +1,38 @@
+#include <iostream>
+#include<fstream>
+
+using namespace std;
+
+void wpis(fstream&file)
+{
+    for(int i=1; i<=10; i++)
+        {
+            file<<i<<endl;
+        }
+}
+
+int main()
+{
+    fstream file;
+    file.open("data.txt", ios::app);
+if(file.is_open())
+{
+    wpis(file);
+    file.close();
+}
+file.open("data.txt", ios::in);
+    if(file.is_open())
+    {
+        string line;
+        int n, coun, sum;
+        while(getline(file, line))
+        {
+            n = stoi(line);
+            sum+=n;
+        }
+        cout<<sum;
+        file.close();
+    }
+
+    return 0;
+}
